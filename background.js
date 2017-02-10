@@ -1,4 +1,15 @@
+/*  Popup Mode
+chrome.runtime.onMessage.addListener(function (msg, sender) {
+  // First, validate the message's structure
+  if ((msg.from === 'content') && (msg.subject === 'showPageAction')) {
+    // Enable the page-action for the requesting tab
+    chrome.pageAction.show(sender.tab.id);
+  }
+});
+*/
+
 var vid;
+
 chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
     if(details.frameId === 0) {
         // Fires only when details.url === currentTab.url
@@ -12,6 +23,7 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
 	
     }
 });
+
 chrome.browserAction.onClicked.addListener(function(tab) {
 	chrome.windows.getAll({}, function(list) {
 		var isWindowExist = false; 
@@ -38,14 +50,18 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 		}, function(window) { vid = window.id; });
 	});	
 });
+
 chrome.contextMenus.onClicked.addListener(OnClickHandler);
-chrome.contextMenus.create({
-	type: 'normal',
-	title: 'Add To My Playlist',
-	id: 'contextMenuItem',
-	contexts: ['page','link'],
-	documentUrlPatterns: ['https://soundcloud.com/*','https://www.youtube.com/*']
-}, function () {});
+//chrome.runtime.onInstalled.addListener(function (details) {
+    chrome.contextMenus.create({
+        type: 'normal',
+        title: 'Add To My Playlist',
+        id: 'contextMenuItem',
+        contexts: ['page','link'],
+	    documentUrlPatterns: ['https://soundcloud.com/*','https://www.youtube.com/*']
+    }, function () {});
+//});
+
 function OnClickHandler(info, tab) {
     chrome.tabs.sendMessage(tab.id, {action: "contextMenu", info: info }, function(response) {}); 
 }

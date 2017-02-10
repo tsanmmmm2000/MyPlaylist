@@ -19,6 +19,9 @@ Now keep calm and enjoy the music. Wish you have a better listening experience :
 
 -----------------------------------------------------------
 
+Version 1.3
+-Enable songs to be sortable by dragging them
+
 Version 1.2
 -Fix the context menus missing issue
 
