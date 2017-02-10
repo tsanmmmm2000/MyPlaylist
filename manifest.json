@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "My Playlist",
-  "version": "1.1",
+  "version": "1.2",
   "description": "The easiest way to add music to your personal playlist from YouTube and SoundCloud",
   "icons": {
     "16": "logo.png",
@@ -18,7 +18,7 @@
   },
   "content_scripts": [
     {
-		"matches": ["https://www.youtube.com/*", "https://soundcloud.com/*", "https://play.spotify.com/*"],
+		"matches": ["https://www.youtube.com/*", "https://soundcloud.com/*"],
 		"js": ["jquery-3.1.0.min.js", "content.js"]
     },
     {
