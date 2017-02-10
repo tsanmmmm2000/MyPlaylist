@@ -125,16 +125,6 @@ li.icon-1 {
      background-repeat: no-repeat;
 } 
 
-
-/*
-.mode:hover, #clear:hover, #reload:hover {
-	color: #f69125;
-}
-
-.mode.selected {
-	color: #f69125;      
-}
-*/
 .btnShow:hover {
 	color: #3c7bd6;
 }
@@ -148,7 +138,7 @@ li.icon-1 {
     text-overflow:ellipsis;
     vertical-align: top;
     white-space: nowrap;
-    width: 400px;
+    width: 80%;
     display: inline-block;
 }
 

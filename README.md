@@ -16,3 +16,9 @@ What's more, we could customize the way we play the music such as in a replay or
 Music can change the world because it can change people. Our vision is to make the power much stronger, and we are very commited to it through programming.
 
 Now keep calm and enjoy the music. Wish you have a better listening experience :)
+
+-----------------------------------------------------------
+
+Version 1.1
+-Make content fit window size
+-Avoid opening multiple windows

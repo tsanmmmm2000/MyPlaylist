@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "My Playlist",
-  "version": "1.0",
+  "version": "1.1",
   "description": "The easiest way to add music to your personal playlist from YouTube and SoundCloud",
   "icons": {
     "16": "logo.png",

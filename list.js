@@ -29,8 +29,13 @@ window.addEventListener('DOMContentLoaded', function () {
 
 (function (){
 
-    WriteList();
-
+     WriteList();
+	 	
+	$(window).resize(function() {
+		var newWidth = $(window).width() - 30;
+		$("body").width(newWidth);
+	});
+		
 	$("#replay").click(function(){
 		Toggle($(this), 1);
 	});
@@ -55,9 +60,10 @@ window.addEventListener('DOMContentLoaded', function () {
 			WriteList();				
 		}
 	});
+	
+	$(window).trigger('resize');
 
 }());
-
 
 function Toggle(thisObj, thisMode) {
 	var modeId = "";

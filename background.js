@@ -8,6 +8,8 @@ chrome.runtime.onMessage.addListener(function (msg, sender) {
 });
 */
 
+var vid;
+
 chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
     if(details.frameId === 0) {
         // Fires only when details.url === currentTab.url
@@ -23,15 +25,30 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
 });
 
 chrome.browserAction.onClicked.addListener(function(tab) {
-	var windowWidth = 610;
-	var windowHeight = 450;
-	chrome.windows.create({	
-		'url': 'https://myplaylist.azurewebsites.net/list.html',
-		'width':  windowWidth,
-		'height': windowHeight,
-		'left': screen.availWidth - windowWidth,
-		'type': 'popup'
-	}, function(window) { });
+	chrome.windows.getAll({}, function(list) {
+		var isWindowExist = false; 
+		for(var i = 0; i < list.length; i++) { 
+			if (list[i].id == vid) {
+				isWindowExist = true;
+				break;
+			}
+		}
+		
+		if (isWindowExist) {
+			chrome.windows.update(vid, {focused: true}); 
+			return;
+		}	
+		
+		var windowWidth = 610;
+		var windowHeight = 450;
+		chrome.windows.create({	
+			'url': 'https://myplaylist.azurewebsites.net/list.html',
+			'width':  windowWidth,
+			'height': windowHeight,
+			'left': screen.availWidth - windowWidth,
+			'type': 'popup',
+		}, function(window) { vid = window.id; });
+	});	
 });
 
 chrome.contextMenus.onClicked.addListener(OnClickHandler);
