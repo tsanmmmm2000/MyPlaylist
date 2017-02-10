@@ -1,0 +1,165 @@
+body {
+	font-family: "微軟正黑體", "Lucida Sans Unicode", "Lucida Grande", "Arial Narrow", sans-serif;
+	font-size: 12px;
+	width: 560px;
+	background: #d3d3d3;
+}
+
+div, span, img {
+	cursor:pointer;
+}
+
+li {
+	margin-top:5px;
+	margin-bottom:5px;
+}
+
+ul {
+	background: #ffffff; 
+     border-radius: 5px 5px 5px 5px;
+	border: 1px solid #dcdcdc;
+}
+
+#marqueeArea {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: #ededed;
+}
+
+#funArea {
+     border-radius: 5px 5px 5px 5px;
+	border: 1px solid #dcdcdc;
+}
+
+.funBar-0 {
+	background: #000000; 	
+}
+
+.funBar-1 {
+	background: #f5f5f5; 	
+}
+
+li.icon-0 {
+	list-style-image:url('https://myplaylist.azurewebsites.net/youtube_icon.png');
+}
+
+li.icon-1 {
+	list-style-image:url('https://myplaylist.azurewebsites.net/soundcloud_icon.png');
+}
+
+#clear {
+	float:right;
+	width: 30px;
+	height: 30px;
+	background: url('https://myplaylist.azurewebsites.net/unclear.png');
+	background-size: 21.1px 26.1px;
+     background-repeat: no-repeat;
+}
+
+#clear:hover {
+	background: url('https://myplaylist.azurewebsites.net/clear.png');
+	background-size: 21.1px 26.1px;
+     background-repeat: no-repeat;	
+}
+
+#reload {
+	float:right;
+	width: 30px;
+	height: 30px;
+	background: url('https://myplaylist.azurewebsites.net/unreload.png');
+	background-size: 25.9px 26.1px;
+     background-repeat: no-repeat;
+	margin-right:10px;
+}
+
+#reload:hover {
+	background: url('https://myplaylist.azurewebsites.net/reload.png');
+	background-size: 25.9px 26.1px;
+     background-repeat: no-repeat;
+}
+
+.mode {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	margin: 0px 10px 5px 10px;
+}
+
+#replay {
+	background: url('https://myplaylist.azurewebsites.net/unrepeat.png');
+	background-size: 30px 30px;
+     background-repeat: no-repeat;
+}
+
+#replay:hover, #replay.selected {
+	background: url('https://myplaylist.azurewebsites.net/repeat.png');
+	background-size: 30px 30px;
+     background-repeat: no-repeat;
+}
+
+#loop {
+	background: url('https://myplaylist.azurewebsites.net/unloop.png');
+	background-size: 30px 30px;
+     background-repeat: no-repeat;
+}
+
+#loop:hover, #loop.selected {
+	background: url('https://myplaylist.azurewebsites.net/loop.png');
+	background-size: 30px 30px;
+     background-repeat: no-repeat;
+} 
+
+#shuffle {
+	background: url('https://myplaylist.azurewebsites.net/unshuffle.png');
+	background-size: 34px 21.5px;
+     background-repeat: no-repeat;
+	width: 34px !important;
+	margin-bottom: 0px; !important;
+}
+
+#shuffle:hover, #shuffle.selected {
+	background: url('https://myplaylist.azurewebsites.net/shuffle.png');
+	background-size: 34px 21.5px;
+     background-repeat: no-repeat;
+} 
+
+
+/*
+.mode:hover, #clear:hover, #reload:hover {
+	color: #f69125;
+}
+
+.mode.selected {
+	color: #f69125;      
+}
+*/
+.btnShow:hover {
+	color: #3c7bd6;
+}
+
+.btnShow.current {
+	color: #3c7bd6;
+}
+
+.autoSkip {
+    overflow:hidden;
+    text-overflow:ellipsis;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 400px;
+    display: inline-block;
+}
+
+#noData {
+	color: #f69125;
+	text-align:center;
+	font-size:18px;
+	cursor:default !important;
+	margin-top:150px;
+}
+
+#playArea {
+	margin-bottom:10px;
+}
