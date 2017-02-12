@@ -17,6 +17,8 @@ Music can change the world because it can change people. Our vision is to make t
 
 Now keep calm and enjoy the music. Wish you have a better listening experience :)
 
+Download it on <a href="https://goo.gl/UJWURv">Chrome Web Store</a>
+
 -----------------------------------------------------------
 
 Version 1.3
