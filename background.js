@@ -14,13 +14,12 @@ chrome.webNavigation.onHistoryStateUpdated.addListener(function(details) {
     if(details.frameId === 0) {
         // Fires only when details.url === currentTab.url
         chrome.tabs.get(details.tabId, function(tab) {
-            if(tab.url === details.url) {
-			    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-				    chrome.tabs.sendMessage(tabs[0].id, {action: "InitButton"}, function(response) {});  
-			    });	
-            }
+			if(tab.url === details.url) {
+				chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+					chrome.tabs.sendMessage(tabs[0].id, {action: "InitButton"}, function(response) {});  
+				});	
+			}
         });
-	
     }
 });
 

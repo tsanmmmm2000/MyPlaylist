@@ -8,18 +8,15 @@ var spotifyPrefix = "play.spotify";
 var soundcloudClientId = "b7e3abba5291e3dff24f938e7e642564";
 
 (function (){
-
 	Initialize();
-			
 	chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
 		if (msg.action == 'InitButton') {
-			// Wait to render
-			LazyInitialize();
+			// Wait to render for SoundCloud
+			setTimeout(Initialize, 3000);
 		} else if (msg.action == 'contextMenu') {
             HandleContextMenuAction(msg.info);
         }
     });
-
 }());
 
 function HandleContextMenuAction(info) {
@@ -30,19 +27,16 @@ function HandleContextMenuAction(info) {
             currentType = 0;
             currentVideoId = linkUrl.split('=')[1];
             var targetIndex = linkUrl.lastIndexOf("/");
-            var path = linkUrl.substring(targetIndex);
-            currentTitle = $(".yt-lockup-title a[href='" + path + "']").attr('title');
-            if (currentTitle == undefined) {
-                currentTitle = $(".content-wrapper a[href='" + path + "']").attr('title');
-            }
-            if (currentVideoId != undefined && currentTitle != undefined) AddToPlaylist();
+			var path = linkUrl.substring(targetIndex);
+			currentTitle = $(".ytd-compact-video-renderer a[href='" + path + "']").find("#video-title").attr("title");
+			if (currentVideoId != undefined && currentTitle != undefined) AddToPlaylist();
         } else {
             var targetIndex = pageUrl.lastIndexOf("/");
             var path = pageUrl.substring(targetIndex);
             if (path != "/") {
                 currentType = 0;
                 currentVideoId = pageUrl.split('=')[1];
-                currentTitle = $('meta[itemprop="name"]').attr('content');
+				currentTitle = $("#container h1").first().text();
                 if (currentVideoId != undefined && currentTitle != undefined) AddToPlaylist();
              }
         }
@@ -73,7 +67,6 @@ function HandleContextMenuAction(info) {
     }
 }
 
-
 function AddToPlaylist() {
     var typeWithVideoId = currentType + "_" + currentVideoId;
 	var key = new Date().getTime() + "_" + typeWithVideoId;
@@ -89,7 +82,7 @@ function AddToPlaylist() {
 			playlist[key] = currentTitle;
 			chrome.storage.local.set({'MyPlaylist': playlist});	
 		}
-          Notify(currentTitle);
+        Notify(currentTitle);
 	});	
 }
 
@@ -115,26 +108,34 @@ function CheckValueExist(playlist, typeWithVideoId) {
 		}
     });
     return isExist;
-}  
+}
 
-function LazyInitialize() {
-    setTimeout(Initialize, 3000);
+function Lazy(element, callback) {
+	var checkExist = setInterval(function() {
+		if (IsElementCreated(element)) {
+			clearInterval(checkExist);
+			if(typeof callback === 'function') {
+				callback();
+			}
+		}
+	 }, 3000);
 }
 
 function Initialize() {
-	if (IsButtonCreated()) return;
 	var url = location.hostname;
-	if (url.startsWith(youtubePrefix)){
-		currentType = 0;
-		currentVideoId = $('meta[itemprop="videoId"]').attr('content');
-		currentTitle = $('meta[itemprop="name"]').attr('content');
-		CreateYoutubeButton();
-		BindAddEvent();		
+	if (url.startsWith(youtubePrefix)){	
+		Lazy($("#page-manager ytd-watch-flexy"), function() {
+			currentType = 0;
+			currentVideoId = $("#page-manager ytd-watch-flexy").attr("video-id");
+			currentTitle = $("#container h1").first().text();
+			CreateYoutubeButton();
+			BindAddEvent();	
+		});
 	} else if (url.startsWith(soundcloudPrefix) && IsAvailablePath(location.pathname)) {
 		// Use api        
 		// Some tracks would return 403(forbidden) error. This issue might cause by the client id.
 		// More info: http://stackoverflow.com/questions/36515127/soundcloud-api-returns-403-error-on-some-track-info
-		// More info: http://stackoverflow.com/questions/36360202/soundcloud-api-urls-timing-out-and-then-returning-error-403-on-about-50-of-trac?rq=1
+		// More info: http://stackoverflow.com/questions/36360202/soundcloud-api-urls-timing-out-and-then-returning-error-403-on-about-50-of-trac?rq=1	
 		var permalink = location.href;
 		$.get('https://api.soundcloud.com/resolve.json?url=' + permalink + '/tracks&client_id=' + soundcloudClientId , function (result) {
 			currentVideoId = result.id;
@@ -152,8 +153,8 @@ function Initialize() {
 	}
 }
 
-function IsButtonCreated() {
-	return ($("#btnAdd").length > 0);
+function IsElementCreated(element) {
+	return (element != null && element != undefined && !$.isEmptyObject(element));
 }
 
 function IsAvailablePath(path) {
@@ -178,44 +179,36 @@ function BindAddEvent() {
 }
 
 function CreateYoutubeButton() {
-    var actionBar = $("#watch8-secondary-actions");
+	$("#btnAdd").parent().remove();
+	var actionBar = $("#meta-contents div[id='top-row']");
 	var addElements = "";
-	addElements += "<div class=\"yt-uix-menu\">";
-	addElements += "<button id=\"btnAdd\" type=\"button\" class=\"yt-uix-button yt-uix-button-size-default yt-uix-button-opacity\" title=\"Add To My Playlist\">";
-    addElements += "<img src=\"https://myplaylist.azurewebsites.net/logo.png\" style=\"width:14px; height:14px; display:inline-block; margin-right:5px;\">";        
-	addElements += "<span class=\"yt-uix-button-content\" style=\"vertical-align: middle;\">Add To My Playlist</span>";
-	addElements += "</button>";
+	addElements += "<div class=\"style-scope ytd-video-secondary-info-renderer\" style=\"display:flex;\">";
+	addElements += "<paper-button id=\"btnAdd\" type=\"button\" class=\"style-scope ytd-subscribe-button-renderer\" title=\"Add To My Playlist\" subscribed>";
+	addElements += "<img src=\"https://myplaylist.azurewebsites.net/logo.png\" style=\"width:14px; height:14px; display:inline-block; margin-right:5px;\">";        
+	addElements += "<span>Add To My Playlist</span>";		
+	addElements += "</paper-button>";
 	addElements += "</div>";
 	actionBar.append(addElements);
 }
 
 function CreateSoundCloudButton(){
+	$("#btnAdd").remove();
 	var actionBar = $(".sc-button-group-medium:first");
 	var addElements = "";
 	addElements += "<button id=\"btnAdd\" type=\"button\" class=\"sc-button sc-button-medium sc-button-responsive\" title=\"Add To My Playlist\">";
-    addElements += "<img src=\"https://myplaylist.azurewebsites.net/logo.png\" style=\"width:14px; height:14px; display:inline-block; margin-right:5px; vertical-align: middle;\">";    
+	addElements += "<img src=\"https://myplaylist.azurewebsites.net/logo.png\" style=\"width:14px; height:14px; display:inline-block; margin-right:5px; vertical-align: middle;\">";    
 	addElements += "<span style=\"vertical-align: middle;\">Add To My Playlist</span>";    
-    addElements += "</button>";
+	addElements += "</button>";
 	actionBar.append(addElements);
 }
 /* Spotify Button
 function CreateSpotifyButton() {
+	$("#btnAdd").remove();
 	var actionBar = $(".extra");
 	var addElements = "";
 	addElements += "<button id=\"btnAdd\" type=\"button\" title=\"Add To My Playlist\">";
 	addElements += "Add To My Playlist";
 	addElements += "</button>";
 	actionBar.append(addElements);
-}
-
-function CreateQuickSoundCloudButton() {
-    $(".soundActions").each(function(){
-        var buttonGroup = $(this).find(".sc-button-group:first");
-        var addElements = "";
-	    addElements += "<button id=\"btnAdd\" type=\"button\" class=\"sc-button sc-button-small sc-button-responsive\" title=\"Add To My Playlist\">";
-	    addElements += "Add To My Playlist";
-	    addElements += "</button>";
-        buttonGroup.append(addElements);
-    });
 }
 */
