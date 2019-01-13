@@ -21,6 +21,10 @@ Download it on <a href="https://goo.gl/UJWURv">Chrome Web Store</a>
 
 -----------------------------------------------------------
 
+Version 1.4
+<br/>
+-Fit YouTube new layout
+
 Version 1.3
 <br/>
 -Enable songs to be sortable by dragging them
