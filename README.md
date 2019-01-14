@@ -24,6 +24,7 @@ Download it on <a href="https://goo.gl/UJWURv">Chrome Web Store</a>
 Version 1.5
 <br/>
 -Fix the issue "Failed to execute 'postMessage' on 'DOMWindow'"
+<br/>
 -Check the value of "chrome.runtime.lastError" while running "tabs.get"
 
 Version 1.4
