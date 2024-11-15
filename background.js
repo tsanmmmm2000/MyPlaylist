@@ -45,7 +45,7 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 		var windowWidth = 610;
 		var windowHeight = 450;
 		chrome.windows.create({	
-			'url': 'https://myplaylist.azurewebsites.net/list.html',
+			'url': 'https://tsanmmmm2000.github.io/MyPlaylist/list.html',
 			'width':  windowWidth,
 			'height': windowHeight,
 			'left': screen.availWidth - windowWidth,

@@ -91,7 +91,7 @@ function Notify(title) {
 		Notification.requestPermission();
      else {
 		var notification = new Notification('Add Success', {
-			icon: 'https://myplaylist.azurewebsites.net/logo.png',
+			icon: 'https://tsanmmmm2000.github.io/MyPlaylist/logo.png',
 			body: title
 		});
     }
@@ -183,10 +183,10 @@ function CreateYoutubeButton() {
 	var actionBar = $("#meta-contents div[id='top-row']");
 	var addElements = "";
 	addElements += "<div class=\"style-scope ytd-video-secondary-info-renderer\" style=\"display:flex;\">";
-	addElements += "<paper-button id=\"btnAdd\" type=\"button\" class=\"style-scope ytd-subscribe-button-renderer\" title=\"Add To My Playlist\" subscribed>";
-	addElements += "<img src=\"https://myplaylist.azurewebsites.net/logo.png\" style=\"width:14px; height:14px; display:inline-block; margin-right:5px;\">";        
+	addElements += "<tp-yt-paper-button id=\"btnAdd\" type=\"button\" class=\"style-scope ytd-subscribe-button-renderer\" title=\"Add To My Playlist\" subscribed>";
+	addElements += "<img src=\"https://tsanmmmm2000.github.io/MyPlaylist/logo.png\" style=\"width:14px; height:14px; display:inline-block; margin-right:5px;\">";        
 	addElements += "<span>Add To My Playlist</span>";		
-	addElements += "</paper-button>";
+	addElements += "</tp-yt-paper-button>";
 	addElements += "</div>";
 	actionBar.append(addElements);
 }
@@ -196,7 +196,7 @@ function CreateSoundCloudButton(){
 	var actionBar = $(".sc-button-group-medium:first");
 	var addElements = "";
 	addElements += "<button id=\"btnAdd\" type=\"button\" class=\"sc-button sc-button-medium sc-button-responsive\" title=\"Add To My Playlist\">";
-	addElements += "<img src=\"https://myplaylist.azurewebsites.net/logo.png\" style=\"width:14px; height:14px; display:inline-block; margin-right:5px; vertical-align: middle;\">";    
+	addElements += "<img src=\"https://tsanmmmm2000.github.io/MyPlaylist/logo.png\" style=\"width:14px; height:14px; display:inline-block; margin-right:5px; vertical-align: middle;\">";    
 	addElements += "<span style=\"vertical-align: middle;\">Add To My Playlist</span>";    
 	addElements += "</button>";
 	actionBar.append(addElements);

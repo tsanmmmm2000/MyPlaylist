@@ -42,24 +42,24 @@ ul {
 }
 
 li.icon-0 {
-	list-style-image:url('https://myplaylist.azurewebsites.net/youtube_icon.png');
+	list-style-image:url('https://tsanmmmm2000.github.io/MyPlaylist/icon/youtube_icon.png');
 }
 
 li.icon-1 {
-	list-style-image:url('https://myplaylist.azurewebsites.net/soundcloud_icon.png');
+	list-style-image:url('https://tsanmmmm2000.github.io/MyPlaylist/icon/soundcloud_icon.png');
 }
 
 #clear {
 	float:right;
 	width: 30px;
 	height: 30px;
-	background: url('https://myplaylist.azurewebsites.net/unclear.png');
+	background: url('https://tsanmmmm2000.github.io/MyPlaylist/icon/unclear.png');
 	background-size: 21.1px 26.1px;
      background-repeat: no-repeat;
 }
 
 #clear:hover {
-	background: url('https://myplaylist.azurewebsites.net/clear.png');
+	background: url('https://tsanmmmm2000.github.io/MyPlaylist/icon/clear.png');
 	background-size: 21.1px 26.1px;
      background-repeat: no-repeat;	
 }
@@ -68,14 +68,14 @@ li.icon-1 {
 	float:right;
 	width: 30px;
 	height: 30px;
-	background: url('https://myplaylist.azurewebsites.net/unreload.png');
+	background: url('https://tsanmmmm2000.github.io/MyPlaylist/icon/unreload.png');
 	background-size: 25.9px 26.1px;
      background-repeat: no-repeat;
 	margin-right:10px;
 }
 
 #reload:hover {
-	background: url('https://myplaylist.azurewebsites.net/reload.png');
+	background: url('https://tsanmmmm2000.github.io/MyPlaylist/icon/reload.png');
 	background-size: 25.9px 26.1px;
      background-repeat: no-repeat;
 }
@@ -88,31 +88,31 @@ li.icon-1 {
 }
 
 #replay {
-	background: url('https://myplaylist.azurewebsites.net/unrepeat.png');
+	background: url('https://tsanmmmm2000.github.io/MyPlaylist/icon/unrepeat.png');
 	background-size: 30px 30px;
      background-repeat: no-repeat;
 }
 
 #replay:hover, #replay.selected {
-	background: url('https://myplaylist.azurewebsites.net/repeat.png');
+	background: url('https://tsanmmmm2000.github.io/MyPlaylist/icon/repeat.png');
 	background-size: 30px 30px;
      background-repeat: no-repeat;
 }
 
 #loop {
-	background: url('https://myplaylist.azurewebsites.net/unloop.png');
+	background: url('https://tsanmmmm2000.github.io/MyPlaylist/icon/unloop.png');
 	background-size: 30px 30px;
      background-repeat: no-repeat;
 }
 
 #loop:hover, #loop.selected {
-	background: url('https://myplaylist.azurewebsites.net/loop.png');
+	background: url('https://tsanmmmm2000.github.io/MyPlaylist/icon/loop.png');
 	background-size: 30px 30px;
      background-repeat: no-repeat;
 } 
 
 #shuffle {
-	background: url('https://myplaylist.azurewebsites.net/unshuffle.png');
+	background: url('https://tsanmmmm2000.github.io/MyPlaylist/icon/unshuffle.png');
 	background-size: 34px 21.5px;
      background-repeat: no-repeat;
 	width: 34px !important;
@@ -120,7 +120,7 @@ li.icon-1 {
 }
 
 #shuffle:hover, #shuffle.selected {
-	background: url('https://myplaylist.azurewebsites.net/shuffle.png');
+	background: url('https://tsanmmmm2000.github.io/MyPlaylist/icon/shuffle.png');
 	background-size: 34px 21.5px;
      background-repeat: no-repeat;
 } 

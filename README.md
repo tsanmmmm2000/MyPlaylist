@@ -21,6 +21,10 @@ Download it on <a href="https://goo.gl/UJWURv">Chrome Web Store</a>
 
 -----------------------------------------------------------
 
+Version 1.6
+<br/>
+-Update static files
+
 Version 1.5
 <br/>
 -Fix some runtime errors 

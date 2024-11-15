@@ -169,7 +169,7 @@ function SortList(playlist) {
 			var type = parseInt(i.substring(splitIndex - 1, splitIndex));
 			item += "<li class=\"icon-" + type + "\">";
 			item += "<div id=\"" + i + "\" class=\"btnShow autoSkip\" title=\"" + n + "\">" + n + "</div>";
-			item += "<img class=\"btnRemove\" src=\"cross.png\" title=\"Remove\" border=\"0\" style=\"float:right; display:none; margin-right:10px;\"/>";
+			item += "<img class=\"btnRemove\" src=\"https://tsanmmmm2000.github.io/MyPlaylist/icon/cross.png\" title=\"Remove\" border=\"0\" style=\"float:right; display:none; margin-right:10px;\"/>";
 			item += "</li>";
 		});			
 		$("#myList").append(item);
